@@ -1,7 +1,9 @@
+import Header from "./components/Header";
+
 function App() {
   return (
     <>
-      <h1 className="font-roboto-mono text-heading-m">Markdown Editor</h1>
+      <Header />
     </>
   );
 }
