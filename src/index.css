@@ -15,4 +15,48 @@
   --color-100: #ffffff;
   --color-orange: #e46643;
   --color-orange-hover: #f39765;
+
+  --font-roboto-reg: "Roboto", sans-serif;
+  --font-roboto-slab: "Roboto Slab", serif;
+  --font-roboto-mono: "Roboto Mono", monospace;
+
+  --text-heading-m: calc(15 / 16 * 1rem);
+  --text-heading-m--font-weight: var(--font-weight-normal);
+
+  --text-heading-s: calc(14 / 16 * 1rem);
+  --text-heading-s--letter-spacing: calc(2 / 16 * 1rem);
+  --text-heading-s--font-weight: var(--font-weight-medium);
+
+  --text-body: calc(13 / 16 * 1rem);
+  --text-body--font-weight: var(--font-weight-light);
+
+  --text-preview-h1: calc(32 / 16 * 1rem);
+  --text-preview-h1--font-weight: var(--font-weight-bold);
+
+  --text-preview-h2: calc(28 / 16 * 1rem);
+  --text-preview-h2--font-weight: var(--font-weight-light);
+
+  --text-preview-h3: calc(24 / 16 * 1rem);
+  --text-preview-h3--font-weight: var(--font-weight-bold);
+
+  --text-preview-h4: calc(20 / 16 * 1rem);
+  --text-preview-h4--font-weight: var(--font-weight-bold);
+
+  --text-preview-h5: calc(16 / 16 * 1rem);
+  --text-preview-h5--font-weight: var(--font-weight-bold);
+
+  --text-preview-h6: calc(14 / 16 * 1rem);
+  --text-preview-h6--font-weight: var(--font-weight-bold);
+
+  --text-preview-p: calc(14 / 16 * 1rem);
+  --text-preview-p--line-height: calc(24 / 16 * 1rem);
+  --text-preview-p--font-weight: var(--font-weight-regular);
+
+  --text-preview-p-bold: calc(14 / 16 * 1rem);
+  --text-preview-p-bold--line-height: calc(24 / 16 * 1rem);
+  --text-preview-p-bold--font-weight: var(--font-weight-bold);
+
+  --text-markdown-code: calc(14 / 16 * 1rem);
+  --text-markdown-code--line-height: calc(24 / 16 * 1rem);
+  --text-markdown-code--font-weight: var(--font-weight-regular);
 }

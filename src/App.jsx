@@ -1,7 +1,7 @@
 function App() {
   return (
     <>
-      <h1 className="text-2xl">Markdown Editor</h1>
+      <h1 className="font-roboto-mono text-heading-m">Markdown Editor</h1>
     </>
   );
 }
