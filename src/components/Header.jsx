@@ -5,17 +5,21 @@ import saveImg from "../assets/icon-save.svg";
 
 export default function Header() {
   return (
-    <header className="bg-800 text-100 flex justify-between">
-      <button className="bg-600">
-        <img src={burgerMenuImg} />
+    <header className="bg-800 text-100 flex h-[4rem] items-center gap-3">
+      <button className="bg-600 h-full flex-[0_4rem] cursor-pointer">
+        <img className="mx-auto" src={burgerMenuImg} />
       </button>
-      <img src={documentImg} alt="Document icon" aria-hidden />
-      <h1>openfile.md</h1>
-      <button>
-        <img src={deleteImg} alt="Trash can icon" />
+
+      <img className="h-6" src={documentImg} alt="Document icon" aria-hidden />
+
+      <h1 className="text-heading-m flex-1">openfile.md</h1>
+
+      <button className="cursor-pointer">
+        <img className="h-6" src={deleteImg} alt="Trash can icon" />
       </button>
-      <button className="bg-orange">
-        <img src={saveImg} alt="Floppy disk icon" />
+
+      <button className="bg-orange me-3 flex aspect-square basis-10 cursor-pointer items-center rounded-lg">
+        <img className="mx-auto h-6" src={saveImg} alt="Floppy disk icon" />
       </button>
     </header>
   );
