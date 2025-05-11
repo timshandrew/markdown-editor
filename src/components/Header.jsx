@@ -6,7 +6,7 @@ import saveImg from "../assets/icon-save.svg";
 export default function Header() {
   return (
     <header className="bg-800 text-100 flex h-[4rem] items-center gap-3">
-      <button className="bg-600 h-full flex-[0_4rem] cursor-pointer">
+      <button className="bg-700 h-full flex-[0_4rem] cursor-pointer">
         <img className="mx-auto" src={burgerMenuImg} />
       </button>
 
