@@ -4,7 +4,11 @@ import MarkdownEditor from "./components/MarkdownEditor";
 import MarkdownPreview from "./components/MarkdownPreview";
 import PreviewToggle from "./components/PreviewToggle";
 
+import markdownData from "./data.json";
+
 function App() {
+  const markdown = markdownData[1].content;
+
   return (
     <div>
       <Header />
@@ -12,11 +16,11 @@ function App() {
       <main className="grid grid-cols-[1fr_1fr_auto]">
         <PreviewToggle />
 
-        <ContentView heading="Markdown">
+        <ContentView heading="Markdown" content={markdown}>
           <MarkdownEditor />
         </ContentView>
 
-        <ContentView heading="Preview">
+        <ContentView heading="Preview" content={markdown}>
           <MarkdownPreview />
         </ContentView>
       </main>

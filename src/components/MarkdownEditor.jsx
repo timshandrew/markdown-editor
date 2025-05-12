@@ -1,7 +1,8 @@
+import { useContext } from "react";
+import { ContentContext } from "../contexts/ContentContext";
+
 export default function MarkdownEditor() {
-  return (
-    <>
-      <span className="row-start-2">MD Editor</span>
-    </>
-  );
+  const markdown = useContext(ContentContext);
+
+  return <p className="font-roboto-mono">{markdown}</p>;
 }

@@ -1,7 +1,12 @@
+import { useContext } from "react";
+import { ContentContext } from "../contexts/ContentContext";
+
 export default function MarkdownPreview() {
+  const markdown = useContext(ContentContext);
+
   return (
     <>
-      <p className="row-start-2">Markdown Preview</p>
+      <p>{markdown}</p>
     </>
   );
 }
