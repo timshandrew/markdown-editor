@@ -9,7 +9,7 @@ function App() {
     <div>
       <Header />
 
-      <main className="flex">
+      <main className="grid grid-cols-[1fr_1fr_auto]">
         <PreviewToggle />
 
         <ContentView heading="Markdown">

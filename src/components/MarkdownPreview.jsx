@@ -1,3 +1,7 @@
 export default function MarkdownPreview() {
-  return <section>Markdown Preview</section>;
+  return (
+    <>
+      <p className="row-start-2">Markdown Preview</p>
+    </>
+  );
 }

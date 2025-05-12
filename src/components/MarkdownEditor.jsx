@@ -1,3 +1,7 @@
 export default function MarkdownEditor() {
-  return <>MD Editor</>;
+  return (
+    <>
+      <span className="row-start-2">MD Editor</span>
+    </>
+  );
 }
