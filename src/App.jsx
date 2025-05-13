@@ -1,3 +1,4 @@
+import { useState } from "react";
 import ContentView from "./components/ContentView";
 import Header from "./components/Header";
 import MarkdownEditor from "./components/MarkdownEditor";
@@ -7,7 +8,7 @@ import PreviewToggle from "./components/PreviewToggle";
 import markdownData from "./data.json";
 
 function App() {
-  const markdown = markdownData[1].content;
+  const [markdown, setMarkdown] = useState(markdownData[1].content);
 
   return (
     <div>
@@ -17,7 +18,7 @@ function App() {
         <PreviewToggle />
 
         <ContentView heading="Markdown" content={markdown}>
-          <MarkdownEditor />
+          <MarkdownEditor setMarkdown={setMarkdown} />
         </ContentView>
 
         <ContentView heading="Preview" content={markdown}>
