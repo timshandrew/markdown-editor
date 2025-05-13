@@ -1,0 +1,48 @@
+@reference "./index.css";
+
+.markdown-preview {
+  & > * {
+    @apply font-roboto-slab text-700 mb-5;
+  }
+
+  & h1 {
+    @apply text-preview-h1;
+  }
+
+  & h2 {
+    @apply text-preview-h2;
+  }
+
+  & h3 {
+    @apply text-preview-h3;
+  }
+
+  & h4 {
+    @apply text-preview-h4;
+  }
+
+  & h5 {
+    @apply text-preview-h5;
+  }
+
+  & h6 {
+    @apply text-preview-h6 text-orange;
+  }
+
+  & p,
+  li {
+    @apply text-preview-p text-500;
+  }
+
+  & ol {
+    @apply ml-10 list-decimal;
+  }
+
+  & ul {
+    @apply ml-10 list-disc;
+
+    & li::marker {
+      @apply text-orange;
+    }
+  }
+}
