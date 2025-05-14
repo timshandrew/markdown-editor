@@ -61,4 +61,8 @@
   & pre {
     @apply bg-200 rounded-md p-6;
   }
+
+  & a {
+    @apply underline;
+  }
 }
