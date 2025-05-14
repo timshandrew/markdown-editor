@@ -45,4 +45,20 @@
       @apply text-orange;
     }
   }
+
+  & blockquote {
+    @apply bg-200 border-orange rounded-md border-l-4 p-6;
+  }
+
+  & blockquote p {
+    @apply text-700 font-bold;
+  }
+
+  & code {
+    @apply font-roboto-mono text-700;
+  }
+
+  & pre {
+    @apply bg-200 rounded-md p-6;
+  }
 }

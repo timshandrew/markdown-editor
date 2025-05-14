@@ -7,7 +7,7 @@ export default function MarkdownPreview() {
   const markdown = useContext(ContentContext);
 
   return (
-    <div className="markdown-preview">
+    <div className="markdown-preview p-5">
       <Markdown>{markdown}</Markdown>
     </div>
   );

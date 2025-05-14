@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@utility no-resize {
+  resize: none;
+}
+
 @theme {
   --color-*: initial;
 
