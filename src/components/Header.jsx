@@ -3,10 +3,13 @@ import burgerMenuImg from "../assets/icon-menu.svg";
 import deleteImg from "../assets/icon-delete.svg";
 import saveImg from "../assets/icon-save.svg";
 
-export default function Header() {
+export default function Header({ setMenuOpen }) {
   return (
-    <header className="bg-800 text-100 flex h-[4rem] items-center gap-3">
-      <button className="bg-700 h-full flex-[0_4rem] cursor-pointer">
+    <header className="bg-800 text-100 col-start-2 flex h-[4rem] items-center gap-3">
+      <button
+        className="bg-700 h-full flex-[0_4rem] cursor-pointer"
+        onClick={() => setMenuOpen((currentValue) => !currentValue)}
+      >
         <img className="mx-auto" src={burgerMenuImg} />
       </button>
 

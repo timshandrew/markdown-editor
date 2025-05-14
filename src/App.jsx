@@ -6,13 +6,17 @@ import MarkdownPreview from "./components/MarkdownPreview";
 import PreviewToggle from "./components/PreviewToggle";
 
 import markdownData from "./data.json";
+import Menu from "./components/Menu";
 
 function App() {
   const [markdown, setMarkdown] = useState(markdownData[1].content);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <div>
-      <Header />
+    <div className="grid grid-cols-[auto_auto]">
+      <Header setMenuOpen={setMenuOpen} />
+
+      <Menu visible={menuOpen} />
 
       <main className="grid grid-cols-[1fr_1fr_auto]">
         <PreviewToggle />
