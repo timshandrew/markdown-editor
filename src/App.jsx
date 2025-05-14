@@ -11,6 +11,7 @@ import Menu from "./components/Menu";
 function App() {
   const [markdown, setMarkdown] = useState(markdownData[1].content);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [previewVisible, setPreviewVisible] = useState(false);
 
   return (
     <div className="grid grid-cols-[auto_auto]">
@@ -19,7 +20,10 @@ function App() {
       <Menu visible={menuOpen} />
 
       <main className="grid grid-cols-[1fr_1fr_auto]">
-        <PreviewToggle />
+        <PreviewToggle
+          previewVisible={previewVisible}
+          setPreviewVisible={setPreviewVisible}
+        />
 
         <ContentView heading="Markdown" content={markdown}>
           <MarkdownEditor setMarkdown={setMarkdown} />
