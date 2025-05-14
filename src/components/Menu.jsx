@@ -2,7 +2,7 @@ import FileListItem from "./FileListItem";
 import logo from "../assets/logo.svg";
 
 export default function Menu({ visible }) {
-  const visibleClasses = visible ? "w-auto p-6" : "w-0 p-0";
+  const visibleClasses = visible ? "w-max p-6" : "w-0 p-0";
 
   return (
     <nav
@@ -10,7 +10,7 @@ export default function Menu({ visible }) {
     >
       <img src={logo} alt="Company logo" />
       <h2 className="text-500 text-heading-s w-max uppercase">My Documents</h2>
-      <button className="bg-orange text-heading-m w-max rounded-md px-12 py-3">
+      <button className="bg-orange hover:bg-orange-hover text-heading-m w-max cursor-pointer rounded-sm px-12 py-3">
         + New Document
       </button>
       <ul className="w-max">
