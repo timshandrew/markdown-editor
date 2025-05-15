@@ -7,7 +7,7 @@ export default function MarkdownEditor({ setMarkdown }) {
   return (
     <div className="font-roboto-mono p-5">
       <textarea
-        className="no-resize field-sizing-content w-full focus:outline-none"
+        className="no-resize field-sizing-content w-full wrap-anywhere focus:outline-none"
         onChange={(e) => setMarkdown(e.target.value)}
         value={markdown}
       ></textarea>

@@ -55,7 +55,7 @@
   }
 
   & code {
-    @apply font-roboto-mono text-700;
+    @apply font-roboto-mono text-700 whitespace-break-spaces;
   }
 
   & pre {

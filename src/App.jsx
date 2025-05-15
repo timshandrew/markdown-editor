@@ -27,6 +27,7 @@ function App() {
         />
 
         <ContentView
+          fullWidthPreview={fullWidthPreview}
           heading="Markdown"
           content={markdown}
           className="col-start-1"
@@ -35,6 +36,7 @@ function App() {
         </ContentView>
 
         <ContentView
+          fullWidthPreview={fullWidthPreview}
           heading="Preview"
           content={markdown}
           className="col-start-3"

@@ -1,6 +1,18 @@
 import { ContentContext } from "../contexts/ContentContext";
 
-export default function ContentView({ heading, content, children, className }) {
+export default function ContentView({
+  heading,
+  content,
+  children,
+  fullWidthPreview,
+  className,
+}) {
+  if (heading == "Preview" && fullWidthPreview) {
+    className = "col-start-1 col-end-[-1]";
+  } else if (heading == "Markdown" && fullWidthPreview) {
+    className = "hidden";
+  }
+
   return (
     <ContentContext.Provider value={content}>
       <section
