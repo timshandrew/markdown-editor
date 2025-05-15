@@ -21,7 +21,7 @@ function App() {
     : "hidden lg:grid lg:col-start-3 lg:col-end-[-1]";
 
   return (
-    <div className="grid grid-cols-[auto_auto]">
+    <div className="grid grid-cols-[auto_auto] overflow-hidden">
       <Header setMenuOpen={setMenuOpen} />
 
       <Menu visible={menuOpen} />
