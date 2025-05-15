@@ -13,6 +13,13 @@ function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
 
+  const editorClassName = fullWidthPreview
+    ? "hidden"
+    : "col-start-1 col-end-[-1] lg:col-end-3";
+  const previewClassName = fullWidthPreview
+    ? "col-start-1 col-end-[-1]"
+    : "hidden lg:grid lg:col-start-3 lg:col-end-[-1]";
+
   return (
     <div className="grid grid-cols-[auto_auto]">
       <Header setMenuOpen={setMenuOpen} />
@@ -27,19 +34,17 @@ function App() {
         />
 
         <ContentView
-          fullWidthPreview={fullWidthPreview}
           heading="Markdown"
           content={markdown}
-          className="col-start-1"
+          className={editorClassName}
         >
           <MarkdownEditor setMarkdown={setMarkdown} />
         </ContentView>
 
         <ContentView
-          fullWidthPreview={fullWidthPreview}
           heading="Preview"
           content={markdown}
-          className="col-start-3"
+          className={previewClassName}
         >
           <MarkdownPreview />
         </ContentView>
