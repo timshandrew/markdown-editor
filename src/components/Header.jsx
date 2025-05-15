@@ -5,7 +5,7 @@ import saveImg from "../assets/icon-save.svg";
 
 export default function Header({ setMenuOpen }) {
   return (
-    <header className="bg-800 text-100 col-start-2 flex h-[4rem] items-center gap-3">
+    <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center gap-3">
       <button
         className="bg-700 h-full flex-[0_0_4rem] cursor-pointer"
         onClick={() => setMenuOpen((currentValue) => !currentValue)}
