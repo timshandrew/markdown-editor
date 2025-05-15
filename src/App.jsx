@@ -21,12 +21,12 @@ function App() {
     : "hidden lg:grid lg:col-start-3 lg:col-end-[-1]";
 
   return (
-    <div className="grid grid-cols-[auto_auto] overflow-hidden">
+    <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[min-content] overflow-hidden">
       <Header setMenuOpen={setMenuOpen} />
 
       <Menu visible={menuOpen} />
 
-      <main className="grid grid-cols-[1fr_2rem_1fr_2rem]">
+      <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
         <PreviewToggle
           fullWidthPreview={fullWidthPreview}
           setPreviewVisible={setFullWidthPreview}
