@@ -5,11 +5,18 @@ import MarkdownEditor from "./components/MarkdownEditor";
 import MarkdownPreview from "./components/MarkdownPreview";
 import PreviewToggle from "./components/PreviewToggle";
 
-import markdownData from "./data.json";
+import jsonData from "./data.json";
 import Menu from "./components/Menu";
 
 function App() {
-  const [markdown, setMarkdown] = useState(markdownData[1].content);
+  const [currentFileIndex, setCurrentFileIndex] = useState(0);
+  const [workingMarkdown, setWorkingMarkdown] = useState(
+    jsonData[currentFileIndex].content,
+  );
+  const [persistedMarkdown, setPersistedMarkdown] = useState(
+    structuredClone(jsonData),
+  );
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
 
@@ -35,15 +42,15 @@ function App() {
 
         <ContentView
           heading="Markdown"
-          content={markdown}
+          content={workingMarkdown}
           className={editorClassName}
         >
-          <MarkdownEditor setMarkdown={setMarkdown} />
+          <MarkdownEditor setMarkdown={setWorkingMarkdown} />
         </ContentView>
 
         <ContentView
           heading="Preview"
-          content={markdown}
+          content={workingMarkdown}
           className={previewClassName}
         >
           <MarkdownPreview />
