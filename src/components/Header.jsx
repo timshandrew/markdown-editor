@@ -3,7 +3,7 @@ import burgerMenuImg from "../assets/icon-menu.svg";
 import deleteImg from "../assets/icon-delete.svg";
 import saveImg from "../assets/icon-save.svg";
 
-export default function Header({ setMenuOpen }) {
+export default function Header({ setMenuOpen, currentFileName }) {
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center gap-3">
       <button
@@ -15,7 +15,7 @@ export default function Header({ setMenuOpen }) {
 
       <img className="h-6" src={documentImg} alt="Document icon" aria-hidden />
 
-      <h1 className="text-heading-m flex-1">openfile.md</h1>
+      <h1 className="text-heading-m flex-1">{currentFileName}</h1>
 
       <button className="cursor-pointer">
         <img className="h-6" src={deleteImg} alt="Trash can icon" />

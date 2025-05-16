@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ContentView from "./components/ContentView";
 import Header from "./components/Header";
 import MarkdownEditor from "./components/MarkdownEditor";
@@ -9,13 +9,18 @@ import jsonData from "./data.json";
 import Menu from "./components/Menu";
 
 function App() {
-  const [currentFileIndex, setCurrentFileIndex] = useState(0);
+  const [currentFileIndex, setCurrentFileIndex] = useState(1);
+
   const [workingMarkdown, setWorkingMarkdown] = useState(
     jsonData[currentFileIndex].content,
   );
   const [persistedMarkdown, setPersistedMarkdown] = useState(
     structuredClone(jsonData),
   );
+
+  useEffect(() => {
+    setWorkingMarkdown(persistedMarkdown[currentFileIndex].content);
+  }, [currentFileIndex, persistedMarkdown]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
@@ -29,9 +34,16 @@ function App() {
 
   return (
     <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden">
-      <Header setMenuOpen={setMenuOpen} />
+      <Header
+        setMenuOpen={setMenuOpen}
+        currentFileName={persistedMarkdown[currentFileIndex].name}
+      />
 
-      <Menu visible={menuOpen} />
+      <Menu
+        visible={menuOpen}
+        persistedMarkdown={persistedMarkdown}
+        setCurrentFileIndex={setCurrentFileIndex}
+      />
 
       <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
         <PreviewToggle
