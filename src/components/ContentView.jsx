@@ -1,12 +1,6 @@
 import { ContentContext } from "../contexts/ContentContext";
 
-export default function ContentView({
-  heading,
-  content,
-  children,
-  fullWidthPreview,
-  className,
-}) {
+export default function ContentView({ heading, content, children, className }) {
   return (
     <ContentContext.Provider value={content}>
       <section

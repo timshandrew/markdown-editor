@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContentView from "./components/ContentView";
 import Header from "./components/Header";
 import MarkdownEditor from "./components/MarkdownEditor";
@@ -10,18 +10,11 @@ import Menu from "./components/Menu";
 
 function App() {
   const [currentFileIndex, setCurrentFileIndex] = useState(1);
-
-  const [workingMarkdown, setWorkingMarkdown] = useState("Some test Data");
-  const [persistedMarkdown, setPersistedMarkdown] = useState(
-    structuredClone(jsonData),
-  );
-
+  const [markdown, setMarkdown] = useState(structuredClone(jsonData));
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
 
-  useEffect(() => {
-    setWorkingMarkdown(persistedMarkdown[currentFileIndex].content);
-  }, [currentFileIndex, persistedMarkdown]);
+  const currentMarkdown = markdown[currentFileIndex];
 
   const editorClassName = fullWidthPreview
     ? "hidden"
@@ -34,14 +27,14 @@ function App() {
     <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden">
       <Header
         setMenuOpen={setMenuOpen}
-        currentFileName={persistedMarkdown[currentFileIndex].name}
+        currentFileName={markdown[currentFileIndex].name}
       />
 
       <Menu
         visible={menuOpen}
-        persistedMarkdown={persistedMarkdown}
+        markdown={markdown}
         setCurrentFileIndex={setCurrentFileIndex}
-        setPersistedMarkdown={setPersistedMarkdown}
+        setMarkdown={setMarkdown}
       />
 
       <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
@@ -53,15 +46,18 @@ function App() {
 
         <ContentView
           heading="Markdown"
-          content={workingMarkdown}
+          content={currentMarkdown.content}
           className={editorClassName}
         >
-          <MarkdownEditor setMarkdown={setWorkingMarkdown} />
+          <MarkdownEditor
+            setMarkdown={setMarkdown}
+            currentFileIndex={currentFileIndex}
+          />
         </ContentView>
 
         <ContentView
           heading="Preview"
-          content={workingMarkdown}
+          content={currentMarkdown.content}
           className={previewClassName}
         >
           <MarkdownPreview />

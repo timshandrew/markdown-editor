@@ -3,13 +3,13 @@ import logo from "../assets/logo.svg";
 
 export default function Menu({
   visible,
-  persistedMarkdown,
+  markdown,
   setCurrentFileIndex,
-  setPersistedMarkdown,
+  setMarkdown,
 }) {
   const visibleClasses = visible ? "w-max p-6 " : "w-0 p-0";
 
-  const fileListItems = persistedMarkdown.map((mdObj, index) => (
+  const fileListItems = markdown.map((mdObj, index) => (
     <FileListItem
       creationDate={mdObj.createdAt}
       fileName={mdObj.name}
@@ -22,7 +22,7 @@ export default function Menu({
     let fileName = "untitled-document.md";
 
     while (true) {
-      let fileNameExists = persistedMarkdown.reduce(
+      let fileNameExists = markdown.reduce(
         (accumulator, mdObj) => accumulator || mdObj.name == fileName,
         false,
       );
@@ -35,14 +35,14 @@ export default function Menu({
       }
     }
 
-    setPersistedMarkdown(() => {
-      const array = structuredClone(persistedMarkdown);
-      array.push({
+    setMarkdown(() => {
+      const newMarkdown = structuredClone(markdown);
+      newMarkdown.push({
         createdAt: "test Time",
         name: fileName,
         content: "Some test content",
       });
-      return array;
+      return newMarkdown;
     });
   }
 
