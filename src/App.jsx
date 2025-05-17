@@ -11,19 +11,17 @@ import Menu from "./components/Menu";
 function App() {
   const [currentFileIndex, setCurrentFileIndex] = useState(1);
 
-  const [workingMarkdown, setWorkingMarkdown] = useState(
-    jsonData[currentFileIndex].content,
-  );
+  const [workingMarkdown, setWorkingMarkdown] = useState("Some test Data");
   const [persistedMarkdown, setPersistedMarkdown] = useState(
     structuredClone(jsonData),
   );
 
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [fullWidthPreview, setFullWidthPreview] = useState(false);
+
   useEffect(() => {
     setWorkingMarkdown(persistedMarkdown[currentFileIndex].content);
   }, [currentFileIndex, persistedMarkdown]);
-
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [fullWidthPreview, setFullWidthPreview] = useState(false);
 
   const editorClassName = fullWidthPreview
     ? "hidden"
@@ -43,6 +41,7 @@ function App() {
         visible={menuOpen}
         persistedMarkdown={persistedMarkdown}
         setCurrentFileIndex={setCurrentFileIndex}
+        setPersistedMarkdown={setPersistedMarkdown}
       />
 
       <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
