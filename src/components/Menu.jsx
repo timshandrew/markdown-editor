@@ -51,7 +51,7 @@ export default function Menu({
     <nav
       className={`bg-900 text-100 row-span-2 row-start-1 flex flex-col items-start gap-6 overflow-hidden ${visibleClasses}`}
     >
-      <img src={logo} alt="Company logo" />
+      <img className="block lg:hidden" src={logo} alt="Company logo" />
 
       <h2 className="text-500 text-heading-s w-max uppercase">My Documents</h2>
 
