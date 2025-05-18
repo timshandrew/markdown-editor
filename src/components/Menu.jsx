@@ -11,6 +11,7 @@ export default function Menu({
 
   const fileListItems = markdown.map((mdObj, index) => (
     <FileListItem
+      key={mdObj.name}
       creationDate={mdObj.createdAt}
       fileName={mdObj.name}
       setCurrentFileIndex={() => setCurrentFileIndex(index)}

@@ -27,7 +27,9 @@ function App() {
     <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden">
       <Header
         setMenuOpen={setMenuOpen}
-        currentFileName={markdown[currentFileIndex].name}
+        setMarkdown={setMarkdown}
+        currentFileName={currentMarkdown.name}
+        currentFileIndex={currentFileIndex}
       />
 
       <Menu
