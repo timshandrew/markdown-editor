@@ -1,19 +1,21 @@
 import { useState } from "react";
+
 import ContentView from "./components/ContentView";
 import Header from "./components/Header";
 import MarkdownEditor from "./components/MarkdownEditor";
 import MarkdownPreview from "./components/MarkdownPreview";
 import PreviewToggle from "./components/PreviewToggle";
-
-import jsonData from "./data.json";
 import Menu from "./components/Menu";
+
+import useStoredState from "./hooks/useStoredState";
+
+import defaultData from "./data.json";
 
 function App() {
   const [currentFileIndex, setCurrentFileIndex] = useState(1);
-  const [markdown, setMarkdown] = useState(structuredClone(jsonData));
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
-
+  const [markdown, setMarkdown] = useStoredState("markdownDb", defaultData);
   const currentMarkdown = markdown[currentFileIndex];
 
   const editorClassName = fullWidthPreview
@@ -32,6 +34,7 @@ function App() {
         currentFileName={currentMarkdown.name}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
+        markdown={markdown}
       />
 
       <Menu

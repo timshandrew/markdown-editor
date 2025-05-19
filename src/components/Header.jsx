@@ -4,6 +4,8 @@ import closeMenuImg from "../assets/icon-close.svg";
 import saveImg from "../assets/icon-save.svg";
 import logo from "../assets/logo.svg";
 
+import { saveToLocalStorage } from "../utils/localStorageUtils.js";
+
 import { TrashCanIcon } from "./SVGComponents.jsx";
 
 export default function Header({
@@ -13,6 +15,7 @@ export default function Header({
   setMarkdown,
   currentFileIndex,
   menuOpen,
+  markdown,
 }) {
   function deleteCurrentFile() {
     if (currentFileIndex > 0) {
@@ -73,7 +76,10 @@ export default function Header({
         <TrashCanIcon className="hover:fill-orange" />
       </button>
 
-      <button className="bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2">
+      <button
+        className="bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2"
+        onClick={() => saveToLocalStorage("markdownDb", markdown)}
+      >
         <span className="text-heading-m order-2 hidden lg:block">
           Save Changes
         </span>
