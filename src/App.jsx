@@ -28,6 +28,7 @@ function App() {
       <Header
         setMenuOpen={setMenuOpen}
         setMarkdown={setMarkdown}
+        setCurrentFileIndex={setCurrentFileIndex}
         currentFileName={currentMarkdown.name}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}

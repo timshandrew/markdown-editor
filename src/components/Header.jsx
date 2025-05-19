@@ -1,7 +1,6 @@
 import documentImg from "../assets/icon-document.svg";
 import burgerMenuImg from "../assets/icon-menu.svg";
 import closeMenuImg from "../assets/icon-close.svg";
-import deleteImg from "../assets/icon-delete.svg";
 import saveImg from "../assets/icon-save.svg";
 import logo from "../assets/logo.svg";
 
@@ -9,11 +8,23 @@ import { TrashCanIcon } from "./SVGComponents.jsx";
 
 export default function Header({
   setMenuOpen,
+  setCurrentFileIndex,
   currentFileName,
   setMarkdown,
   currentFileIndex,
   menuOpen,
 }) {
+  function deleteCurrentFile() {
+    if (currentFileIndex > 0) {
+      setMarkdown((oldMd) =>
+        structuredClone(
+          oldMd.filter((file, index) => index !== currentFileIndex),
+        ),
+      );
+      setCurrentFileIndex((oldIndex) => (oldIndex === 0 ? 0 : oldIndex - 1));
+    }
+  }
+
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
       <button
@@ -58,7 +69,7 @@ export default function Header({
         />
       </div>
 
-      <button className="me-3 cursor-pointer">
+      <button className="me-3 cursor-pointer" onClick={deleteCurrentFile}>
         <TrashCanIcon className="hover:fill-orange" />
       </button>
 
