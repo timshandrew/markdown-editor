@@ -8,11 +8,11 @@ export default function FileListItem({
   return (
     <li
       onClick={setCurrentFileIndex}
-      className="grid cursor-pointer grid-cols-[auto_1fr] grid-rows-2 items-center gap-x-4"
+      className="group grid cursor-pointer grid-cols-[auto_1fr] grid-rows-2 items-center gap-x-4"
     >
       <img className="row-span-2" src={fileIcon} />
       <span className="text-500 text-body">{creationDate}</span>
-      <span className="text-heading-m">{fileName}</span>
+      <span className="text-heading-m group-hover:text-orange">{fileName}</span>
     </li>
   );
 }

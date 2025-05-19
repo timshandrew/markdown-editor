@@ -15,7 +15,7 @@ export default function Header({
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
       <button
-        className="bg-700 me-6 h-full flex-[0_0_4rem] cursor-pointer"
+        className="bg-700 hover:bg-orange me-6 h-full flex-[0_0_4rem] cursor-pointer"
         onClick={() => setMenuOpen((currentValue) => !currentValue)}
       >
         <img
@@ -25,12 +25,12 @@ export default function Header({
       </button>
 
       <img
-        className="me-4 hidden border-200 border-e-2 py-3 pe-4 lg:block"
+        className="me-4 hidden border-600 border-e-2 py-3 pe-4 lg:block"
         alt="Product logo"
         src={logo}
       />
 
-      <div className="me-auto grid max-w-3/10 flex-1 grid-cols-[auto_1fr] items-center">
+      <div className="me-auto grid grid-cols-[auto_1fr] items-center lg:basis-[20rem]">
         <img
           className="row-span-2 me-4 h-5"
           src={documentImg}
@@ -43,7 +43,7 @@ export default function Header({
         <input
           id="docName"
           type="text"
-          className="text-heading-m focus:border-b-1 focus:outline-0"
+          className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
           defaultValue={currentFileName}
           key={currentFileName}
           onBlur={(e) =>
