@@ -72,12 +72,15 @@ export default function Header({
         />
       </div>
 
-      <button className="me-3 cursor-pointer" onClick={deleteCurrentFile}>
+      <button
+        className={`me-3 cursor-pointer ${menuOpen ? "hidden" : "block"}`}
+        onClick={deleteCurrentFile}
+      >
         <TrashCanIcon className="hover:fill-orange" />
       </button>
 
       <button
-        className="bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2"
+        className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
         onClick={() => saveToLocalStorage("markdownDb", markdown)}
       >
         <span className="text-heading-m order-2 hidden lg:block">
