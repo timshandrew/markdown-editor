@@ -25,14 +25,14 @@ export default function Header({
       </button>
 
       <img
-        className="hidden border-200 border-e-2 py-3 pe-3 lg:block"
+        className="me-4 hidden border-200 border-e-2 py-3 pe-4 lg:block"
         alt="Product logo"
         src={logo}
       />
 
       <div className="me-auto grid max-w-3/10 flex-1 grid-cols-[auto_1fr] items-center">
         <img
-          className="row-span-2 ms-3 me-4 h-5"
+          className="row-span-2 me-4 h-5"
           src={documentImg}
           alt="Document icon"
           aria-hidden
@@ -56,7 +56,7 @@ export default function Header({
         />
       </div>
 
-      <button className="cursor-pointer">
+      <button className="me-3 cursor-pointer">
         <img className="h-6" src={deleteImg} alt="Trash can icon" />
       </button>
 
