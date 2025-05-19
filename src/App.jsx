@@ -30,6 +30,7 @@ function App() {
         setMarkdown={setMarkdown}
         currentFileName={currentMarkdown.name}
         currentFileIndex={currentFileIndex}
+        menuOpen={menuOpen}
       />
 
       <Menu

@@ -1,5 +1,6 @@
 import documentImg from "../assets/icon-document.svg";
 import burgerMenuImg from "../assets/icon-menu.svg";
+import closeMenuImg from "../assets/icon-close.svg";
 import deleteImg from "../assets/icon-delete.svg";
 import saveImg from "../assets/icon-save.svg";
 import logo from "../assets/logo.svg";
@@ -9,6 +10,7 @@ export default function Header({
   currentFileName,
   setMarkdown,
   currentFileIndex,
+  menuOpen,
 }) {
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
@@ -16,7 +18,10 @@ export default function Header({
         className="bg-700 me-6 h-full flex-[0_0_4rem] cursor-pointer"
         onClick={() => setMenuOpen((currentValue) => !currentValue)}
       >
-        <img className="mx-auto" src={burgerMenuImg} />
+        <img
+          className="mx-auto"
+          src={menuOpen ? closeMenuImg : burgerMenuImg}
+        />
       </button>
 
       <img
