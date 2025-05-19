@@ -7,7 +7,7 @@ export default function MarkdownPreview() {
   const markdown = useContext(ContentContext);
 
   return (
-    <div className="markdown-preview p-5">
+    <div className="markdown-preview mx-auto max-w-[80ch] p-5">
       <Markdown>{markdown}</Markdown>
     </div>
   );
