@@ -3,11 +3,13 @@ import { ContentContext } from "../contexts/ContentContext";
 import "../styles/previewStyles.css";
 import Markdown from "react-markdown";
 
-export default function MarkdownPreview() {
+export default function MarkdownPreview({ fullWidthPreview }) {
   const markdown = useContext(ContentContext);
 
   return (
-    <div className="markdown-preview mx-auto max-w-[80ch] p-5">
+    <div
+      className={`${fullWidthPreview && "mx-auto max-w-[50rem]"} markdown-preview p-5`}
+    >
       <Markdown>{markdown}</Markdown>
     </div>
   );

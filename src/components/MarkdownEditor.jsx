@@ -5,9 +5,9 @@ export default function MarkdownEditor({ setMarkdown, currentFileIndex }) {
   const markdown = useContext(ContentContext);
 
   return (
-    <div className="font-roboto-mono p-5">
+    <div className="font-roboto-mono row-start-2 row-end-[-1] p-5">
       <textarea
-        className="no-resize field-sizing-content w-full wrap-anywhere focus:outline-none"
+        className="no-resize field-sizing-content h-full w-full wrap-anywhere focus:outline-none"
         onChange={(e) =>
           setMarkdown((currentMd) => {
             let newMd = structuredClone(currentMd);

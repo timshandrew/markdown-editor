@@ -67,7 +67,7 @@ function App() {
           content={currentMarkdown.content}
           className={previewClassName}
         >
-          <MarkdownPreview />
+          <MarkdownPreview fullWidthPreview={fullWidthPreview} />
         </ContentView>
       </main>
     </div>
