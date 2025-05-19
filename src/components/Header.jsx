@@ -5,6 +5,8 @@ import deleteImg from "../assets/icon-delete.svg";
 import saveImg from "../assets/icon-save.svg";
 import logo from "../assets/logo.svg";
 
+import { TrashCanIcon } from "./SVGComponents.jsx";
+
 export default function Header({
   setMenuOpen,
   currentFileName,
@@ -57,7 +59,7 @@ export default function Header({
       </div>
 
       <button className="me-3 cursor-pointer">
-        <img className="h-6" src={deleteImg} alt="Trash can icon" />
+        <TrashCanIcon className="hover:fill-orange" />
       </button>
 
       <button className="bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2">
