@@ -1,5 +1,6 @@
 import FileListItem from "./FileListItem";
 import logo from "../assets/logo.svg";
+import { Switch } from "./ui/switch";
 
 export default function Menu({
   visible,
@@ -71,6 +72,8 @@ export default function Menu({
       >
         Theme
       </button>
+
+      <Switch />
     </nav>
   );
 }
