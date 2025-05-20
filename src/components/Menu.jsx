@@ -6,6 +6,7 @@ export default function Menu({
   markdown,
   setCurrentFileIndex,
   setMarkdown,
+  switchTheme,
 }) {
   const visibleClasses = visible ? "w-max p-6 " : "w-0 p-0";
 
@@ -63,6 +64,13 @@ export default function Menu({
       </button>
 
       <ul className="w-max">{fileListItems}</ul>
+
+      <button
+        className="bg-orange hover:bg-orange-hover mx-auto cursor-pointer rounded-md p-4"
+        onClick={switchTheme}
+      >
+        Theme
+      </button>
     </nav>
   );
 }

@@ -18,6 +18,14 @@ function App() {
   const [markdown, setMarkdown] = useStoredState("markdownDb", defaultData);
   const currentMarkdown = markdown[currentFileIndex];
 
+  const [theme, setTheme] = useState("light-theme");
+
+  function switchTheme() {
+    setTheme((oldTheme) =>
+      oldTheme === "light-theme" ? "dark-theme" : "light-theme",
+    );
+  }
+
   const editorClassName = fullWidthPreview
     ? "hidden"
     : "col-start-1 col-end-[-1] lg:col-end-3";
@@ -26,7 +34,9 @@ function App() {
     : "hidden lg:grid lg:col-start-3 lg:col-end-[-1]";
 
   return (
-    <div className="grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden">
+    <div
+      className={`${theme} grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden`}
+    >
       <Header
         setMenuOpen={setMenuOpen}
         setMarkdown={setMarkdown}
@@ -42,9 +52,10 @@ function App() {
         markdown={markdown}
         setCurrentFileIndex={setCurrentFileIndex}
         setMarkdown={setMarkdown}
+        switchTheme={switchTheme}
       />
 
-      <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
+      <main className="my-dark-theme:bg-1000 grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
         <PreviewToggle
           fullWidthPreview={fullWidthPreview}
           setPreviewVisible={setFullWidthPreview}

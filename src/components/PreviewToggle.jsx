@@ -7,13 +7,13 @@ export default function PreviewToggle({
 }) {
   return (
     <button
-      className={`group bg-200 order-last row-start-1 cursor-pointer px-2 ${className}`}
+      className={`group my-dark-theme:bg-900 bg-200 order-last row-start-1 cursor-pointer px-2 ${className}`}
       onClick={() => setPreviewVisible(!fullWidthPreview)}
     >
       {fullWidthPreview ? (
-        <HidePreviewIcon className="group-hover:fill-orange" />
+        <HidePreviewIcon className="my-dark-theme:fill-400 group-hover:fill-orange" />
       ) : (
-        <ShowPreviewIcon className="group-hover:fill-orange" />
+        <ShowPreviewIcon className="my-dark-theme:fill-400 group-hover:fill-orange" />
       )}
     </button>
   );

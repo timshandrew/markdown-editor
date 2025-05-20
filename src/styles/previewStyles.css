@@ -5,6 +5,11 @@
     @apply font-roboto-slab text-700 mb-5;
   }
 
+  /* No need for the :is here but I learned it recently so using it.  */
+  & :is(h1, h2, h3, h4, h5, h6) {
+    @apply my-dark-theme:text-100;
+  }
+
   & h1 {
     @apply text-preview-h1;
   }
@@ -31,7 +36,7 @@
 
   & p,
   li {
-    @apply text-preview-p text-500;
+    @apply text-preview-p text-500 my-dark-theme:text-400;
   }
 
   & ol {
@@ -47,19 +52,19 @@
   }
 
   & blockquote {
-    @apply bg-200 border-orange rounded-md border-l-4 p-6;
+    @apply bg-200 my-dark-theme:bg-800 border-orange rounded-md border-l-4 p-6;
   }
 
   & blockquote p {
-    @apply text-700 font-bold;
+    @apply text-700 my-dark-theme:text-100 font-bold;
   }
 
   & code {
-    @apply font-roboto-mono text-700 whitespace-break-spaces;
+    @apply font-roboto-mono text-700 my-dark-theme:text-100 whitespace-break-spaces;
   }
 
   & pre {
-    @apply bg-200 rounded-md p-6;
+    @apply bg-200 my-dark-theme:bg-800 rounded-md p-6;
   }
 
   & a {

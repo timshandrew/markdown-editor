@@ -4,6 +4,12 @@
   resize: none;
 }
 
+@custom-variant my-dark-theme {
+  &:where(.dark-theme *) {
+    @slot;
+  }
+}
+
 @theme {
   --color-*: initial;
 
