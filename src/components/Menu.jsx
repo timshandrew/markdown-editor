@@ -1,10 +1,11 @@
 import FileListItem from "./FileListItem";
 import logo from "../assets/logo.svg";
-import { Switch } from "./ui/switch";
+import ThemeSwitch from "./ui/ThemeSwitch";
 
 export default function Menu({
   visible,
   markdown,
+  theme,
   setCurrentFileIndex,
   setMarkdown,
   switchTheme,
@@ -66,14 +67,11 @@ export default function Menu({
 
       <ul className="w-max">{fileListItems}</ul>
 
-      <button
-        className="bg-orange hover:bg-orange-hover mx-auto cursor-pointer rounded-md p-4"
-        onClick={switchTheme}
-      >
-        Theme
-      </button>
-
-      <Switch />
+      <ThemeSwitch
+        className="self-center"
+        theme={theme}
+        switchTheme={switchTheme}
+      />
     </nav>
   );
 }

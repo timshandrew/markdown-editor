@@ -50,6 +50,7 @@ function App() {
       <Menu
         visible={menuOpen}
         markdown={markdown}
+        theme={theme}
         setCurrentFileIndex={setCurrentFileIndex}
         setMarkdown={setMarkdown}
         switchTheme={switchTheme}
