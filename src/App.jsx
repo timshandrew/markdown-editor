@@ -18,12 +18,10 @@ function App() {
   const [markdown, setMarkdown] = useStoredState("markdownDb", defaultData);
   const currentMarkdown = markdown[currentFileIndex];
 
-  const [theme, setTheme] = useState("light-theme");
+  const [theme, setTheme] = useState("light");
 
   function switchTheme() {
-    setTheme((oldTheme) =>
-      oldTheme === "light-theme" ? "dark-theme" : "light-theme",
-    );
+    setTheme((oldTheme) => (oldTheme === "light" ? "dark" : "light"));
   }
 
   const editorClassName = fullWidthPreview
@@ -56,7 +54,7 @@ function App() {
         switchTheme={switchTheme}
       />
 
-      <main className="my-dark-theme:bg-1000 grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
+      <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
         <PreviewToggle
           fullWidthPreview={fullWidthPreview}
           setPreviewVisible={setFullWidthPreview}
