@@ -1,12 +1,12 @@
 import documentImg from "../assets/icon-document.svg";
 import burgerMenuImg from "../assets/icon-menu.svg";
 import closeMenuImg from "../assets/icon-close.svg";
-import saveImg from "../assets/icon-save.svg";
 import logo from "../assets/logo.svg";
+import saveImg from "../assets/icon-save.svg";
 
 import { saveToLocalStorage } from "../utils/localStorageUtils.js";
 
-import { TrashCanIcon } from "./SVGComponents.jsx";
+import DeleteButton from "./DeleteButton";
 
 export default function Header({
   setMenuOpen,
@@ -17,17 +17,6 @@ export default function Header({
   menuOpen,
   markdown,
 }) {
-  function deleteCurrentFile() {
-    if (currentFileIndex > 0) {
-      setMarkdown((oldMd) =>
-        structuredClone(
-          oldMd.filter((file, index) => index !== currentFileIndex),
-        ),
-      );
-      setCurrentFileIndex((oldIndex) => (oldIndex === 0 ? 0 : oldIndex - 1));
-    }
-  }
-
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
       <button
@@ -72,12 +61,12 @@ export default function Header({
         />
       </div>
 
-      <button
-        className={`me-3 cursor-pointer ${menuOpen ? "hidden" : "block"}`}
-        onClick={deleteCurrentFile}
-      >
-        <TrashCanIcon className="hover:fill-orange" />
-      </button>
+      <DeleteButton
+        setCurrentFileIndex={setCurrentFileIndex}
+        setMarkdown={setMarkdown}
+        currentFileIndex={currentFileIndex}
+        menuOpen={menuOpen}
+      />
 
       <button
         className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
