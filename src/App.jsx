@@ -10,7 +10,6 @@ import Menu from "./components/Menu";
 import useStoredState from "./hooks/useStoredState";
 
 import defaultData from "./data.json";
-import { DialogPortal } from "./components/ui/dialog";
 
 function App() {
   const [currentFileIndex, setCurrentFileIndex] = useState(1);

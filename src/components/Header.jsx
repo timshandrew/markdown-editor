@@ -66,6 +66,7 @@ export default function Header({
         setMarkdown={setMarkdown}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
+        currentFileName={currentFileName}
       />
 
       <button

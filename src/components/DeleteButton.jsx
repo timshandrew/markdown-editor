@@ -14,6 +14,7 @@ import { TrashCanIcon } from "./SVGComponents.jsx";
 export default function DeleteButton({
   menuOpen,
   currentFileIndex,
+  currentFileName,
   setCurrentFileIndex,
   setMarkdown,
 }) {
@@ -40,14 +41,21 @@ export default function DeleteButton({
 
       <DialogPortal>
         <DialogOverlay />
-        <DialogContent>
-          <DialogTitle>Delete this document?</DialogTitle>
-          <DialogDescription>
-            Are you sure you want to delete the ‘welcome.md’ document and its
-            contents? This action cannot be reversed.
+        <DialogContent className="font-roboto-slab">
+          <DialogTitle className="text-preview-h4 font-roboto-slab mb-4">
+            Delete this document?
+          </DialogTitle>
+          <DialogDescription className="text-preview-p text-500 mb-4">
+            Are you sure you want to delete the '{currentFileName}' document and
+            its contents? This action cannot be reversed.
           </DialogDescription>
           <DialogClose>
-            <button onClick={deleteCurrentFile}>Confirm & Delete</button>
+            <button
+              className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover w-full cursor-pointer rounded-md py-2"
+              onClick={deleteCurrentFile}
+            >
+              Confirm & Delete
+            </button>
           </DialogClose>
         </DialogContent>
       </DialogPortal>
