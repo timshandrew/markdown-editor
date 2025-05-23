@@ -2,6 +2,8 @@ import FileListItem from "./FileListItem";
 import logo from "../assets/logo.svg";
 import ThemeSwitch from "./ui/ThemeSwitch";
 
+import { getCurrentDate } from "@/lib/utils";
+
 export default function Menu({
   visible,
   markdown,
@@ -42,7 +44,7 @@ export default function Menu({
     setMarkdown(() => {
       const newMarkdown = structuredClone(markdown);
       newMarkdown.push({
-        createdAt: "test Time",
+        createdAt: getCurrentDate(),
         name: fileName,
         content: "Some test content",
       });
