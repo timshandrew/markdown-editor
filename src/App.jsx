@@ -18,7 +18,7 @@ function App() {
   const [markdown, setMarkdown] = useStoredState("markdownDb", defaultData);
   const currentMarkdown = markdown[currentFileIndex];
 
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useStoredState("theme", "light");
 
   function switchTheme() {
     setTheme((oldTheme) => (oldTheme === "light" ? "dark" : "light"));
