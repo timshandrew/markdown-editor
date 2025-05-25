@@ -11,7 +11,6 @@ import DeleteButton from "./DeleteButton";
 export default function Header({
   setMenuOpen,
   setCurrentFileIndex,
-  currentFileName,
   setMarkdown,
   currentFileIndex,
   menuOpen,
@@ -49,8 +48,8 @@ export default function Header({
           id="docName"
           type="text"
           className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
-          defaultValue={currentFileName}
-          key={currentFileName}
+          defaultValue={markdown.name}
+          key={markdown.name} // Ensures the input updates when the markdown file changes.
           onBlur={(e) =>
             setMarkdown((currentMd) => {
               let newMd = structuredClone(currentMd);
@@ -66,7 +65,7 @@ export default function Header({
         setMarkdown={setMarkdown}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
-        currentFileName={currentFileName}
+        currentFileName={markdown.name}
       />
 
       <button

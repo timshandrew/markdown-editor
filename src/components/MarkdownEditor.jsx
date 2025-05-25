@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { ContentContext } from "../contexts/ContentContext";
 
-export default function MarkdownEditor({ setMarkdown, currentFileIndex }) {
+export default function MarkdownEditor({ setMarkdown }) {
   const markdown = useContext(ContentContext);
 
   return (
@@ -11,7 +11,7 @@ export default function MarkdownEditor({ setMarkdown, currentFileIndex }) {
         onChange={(e) =>
           setMarkdown((currentMd) => {
             let newMd = structuredClone(currentMd);
-            newMd[currentFileIndex].content = e.target.value;
+            newMd.content = e.target.value;
             return newMd;
           })
         }

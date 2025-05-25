@@ -14,3 +14,7 @@ export function retrieveFromLocalStorage(key) {
         console.log(error)
     }
 }
+
+export function getMarkdownFile(index) {
+    return retrieveFromLocalStorage("markdownDb")[index]
+}

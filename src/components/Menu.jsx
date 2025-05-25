@@ -6,15 +6,15 @@ import { getCurrentDate } from "@/lib/utils";
 
 export default function Menu({
   visible,
-  markdown,
+  fileMetaData,
+  setFileMetaData,
   theme,
   setCurrentFileIndex,
-  setMarkdown,
   switchTheme,
 }) {
   const visibleClasses = visible ? "w-max p-6 " : "w-0 p-0";
 
-  const fileListItems = markdown.map((mdObj, index) => (
+  const fileListItems = fileMetaData.map((mdObj, index) => (
     <FileListItem
       key={mdObj.name}
       creationDate={mdObj.createdAt}
@@ -28,7 +28,7 @@ export default function Menu({
     let fileName = "untitled-document.md";
 
     while (true) {
-      let fileNameExists = markdown.reduce(
+      let fileNameExists = fileMetaData.reduce(
         (accumulator, mdObj) => accumulator || mdObj.name == fileName,
         false,
       );
@@ -41,12 +41,11 @@ export default function Menu({
       }
     }
 
-    setMarkdown(() => {
-      const newMarkdown = structuredClone(markdown);
+    setFileMetaData(() => {
+      const newMarkdown = structuredClone(fileMetaData);
       newMarkdown.push({
         createdAt: getCurrentDate(),
         name: fileName,
-        content: "Some test content",
       });
       return newMarkdown;
     });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import ContentView from "./components/ContentView";
 import Header from "./components/Header";
@@ -9,14 +9,22 @@ import Menu from "./components/Menu";
 
 import useStoredState from "./hooks/useStoredState";
 
-import defaultData from "./data.json";
+import useMarkdown from "./hooks/useMarkdown";
+import { getMarkdownFile } from "./utils/localStorageUtils";
+import { useFileMetaData } from "./hooks/useFileMetaData";
 
 function App() {
-  const [currentFileIndex, setCurrentFileIndex] = useState(1);
+  const INITIALINDEX = 1;
+  const [currentFileIndex, setCurrentFileIndex] = useState(INITIALINDEX);
+  const [workingMarkdown, setWorkingMarkdown] = useMarkdown(INITIALINDEX);
+  const [fileMetaData, setFileMetaData] = useFileMetaData();
+
+  useEffect(() => {
+    setWorkingMarkdown(getMarkdownFile(currentFileIndex));
+  }, [currentFileIndex, setWorkingMarkdown]);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
-  const [markdown, setMarkdown] = useStoredState("markdownDb", defaultData);
-  const currentMarkdown = markdown[currentFileIndex];
 
   const [theme, setTheme] = useStoredState("theme", "light");
 
@@ -37,20 +45,19 @@ function App() {
     >
       <Header
         setMenuOpen={setMenuOpen}
-        setMarkdown={setMarkdown}
+        setMarkdown={setWorkingMarkdown}
         setCurrentFileIndex={setCurrentFileIndex}
-        currentFileName={currentMarkdown.name}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
-        markdown={markdown}
+        markdown={workingMarkdown}
       />
 
       <Menu
         visible={menuOpen}
-        markdown={markdown}
+        fileMetaData={fileMetaData}
+        setFileMetaData={setFileMetaData}
         theme={theme}
         setCurrentFileIndex={setCurrentFileIndex}
-        setMarkdown={setMarkdown}
         switchTheme={switchTheme}
       />
 
@@ -63,18 +70,18 @@ function App() {
 
         <ContentView
           heading="Markdown"
-          content={currentMarkdown.content}
+          content={workingMarkdown.content}
           className={editorClassName}
         >
           <MarkdownEditor
-            setMarkdown={setMarkdown}
+            setMarkdown={setWorkingMarkdown}
             currentFileIndex={currentFileIndex}
           />
         </ContentView>
 
         <ContentView
           heading="Preview"
-          content={currentMarkdown.content}
+          content={workingMarkdown.content}
           className={previewClassName}
         >
           <MarkdownPreview fullWidthPreview={fullWidthPreview} />
