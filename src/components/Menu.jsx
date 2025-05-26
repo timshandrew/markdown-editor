@@ -4,18 +4,19 @@ import ThemeSwitch from "./ui/ThemeSwitch";
 
 import { getCurrentDate } from "@/lib/utils";
 import { addFileToStorage } from "@/utils/localStorageUtils.js";
+import useFileItems from "@/hooks/useFileItems";
 
 export default function Menu({
   visible,
-  fileMetaData,
-  setFileMetaData,
   theme,
   setCurrentFileIndex,
   switchTheme,
 }) {
+  const [fileItems, _] = useFileItems();
+
   const visibleClasses = visible ? "w-max p-6 " : "w-0 p-0";
 
-  const fileListItems = fileMetaData.map((mdObj, index) => (
+  const fileListItems = fileItems.map((mdObj, index) => (
     <FileListItem
       key={mdObj.name}
       creationDate={mdObj.createdAt}

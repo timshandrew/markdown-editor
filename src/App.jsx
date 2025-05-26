@@ -6,13 +6,13 @@ import Menu from "./components/Menu";
 
 import useStoredState from "./hooks/useStoredState";
 
-import { useFileMetaData } from "./hooks/useFileMetaData";
+import useFileItems from "./hooks/useFileItems";
 import ContentViewGroup from "./components/ContentViewGroup";
 
 function App() {
   const INITIALINDEX = 1;
   const [currentFileIndex, setCurrentFileIndex] = useState(INITIALINDEX);
-  const [fileMetaData, setFileMetaData] = useFileMetaData();
+  const [fileMetaData, setFileMetaData] = useFileItems();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
