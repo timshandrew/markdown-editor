@@ -18,3 +18,19 @@ export function retrieveFromLocalStorage(key) {
 export function getMarkdownFile(index) {
     return retrieveFromLocalStorage("markdownDb")[index]
 }
+
+export function addFileToStorage(fileName, createdAt) {
+    let markdownDb = retrieveFromLocalStorage("markdownDb");
+
+    if (!markdownDb) {
+        markdownDb = [];
+    }
+
+    markdownDb.push({
+        name: fileName,
+        createdAt: createdAt,
+        content: "# New file."
+    });
+
+    saveToLocalStorage("markdownDb", markdownDb);
+}

@@ -3,6 +3,7 @@ import logo from "../assets/logo.svg";
 import ThemeSwitch from "./ui/ThemeSwitch";
 
 import { getCurrentDate } from "@/lib/utils";
+import { addFileToStorage } from "@/utils/localStorageUtils.js";
 
 export default function Menu({
   visible,
@@ -49,6 +50,8 @@ export default function Menu({
       });
       return newMarkdown;
     });
+
+    addFileToStorage(fileName, getCurrentDate());
   }
 
   return (
