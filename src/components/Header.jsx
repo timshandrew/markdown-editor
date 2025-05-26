@@ -4,7 +4,7 @@ import closeMenuImg from "../assets/icon-close.svg";
 import logo from "../assets/logo.svg";
 import saveImg from "../assets/icon-save.svg";
 
-import { saveToLocalStorage } from "../utils/localStorageUtils.js";
+import { getMarkdownFile } from "../utils/localStorageUtils.js";
 
 import DeleteButton from "./DeleteButton";
 
@@ -14,8 +14,9 @@ export default function Header({
   setMarkdown,
   currentFileIndex,
   menuOpen,
-  markdown,
 }) {
+  const fileName = getMarkdownFile(currentFileIndex).name;
+
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
       <button
@@ -48,15 +49,15 @@ export default function Header({
           id="docName"
           type="text"
           className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
-          defaultValue={markdown.name}
-          key={markdown.name} // Ensures the input updates when the markdown file changes.
-          onBlur={(e) =>
-            setMarkdown((currentMd) => {
-              let newMd = structuredClone(currentMd);
-              newMd[currentFileIndex].name = e.target.value;
-              return newMd;
-            })
-          }
+          defaultValue={fileName}
+          key={fileName} // Ensures the input updates when the markdown file changes.
+          // onBlur={(e) =>
+          //   setMarkdown((currentMd) => {
+          //     let newMd = structuredClone(currentMd);
+          //     newMd[currentFileIndex].name = e.target.value;
+          //     return newMd;
+          //   })
+          // }
         />
       </div>
 
@@ -65,12 +66,12 @@ export default function Header({
         setMarkdown={setMarkdown}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
-        currentFileName={markdown.name}
+        currentFileName={fileName}
       />
 
       <button
         className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
-        onClick={() => saveToLocalStorage("markdownDb", markdown)}
+        // onClick={() => saveToLocalStorage("markdownDb", markdown)}
       >
         <span className="text-heading-m order-2 hidden lg:block">
           Save Changes

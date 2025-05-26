@@ -22,7 +22,6 @@ export function useFileMetaData() {
         }
 
         
-
     },[fileMetaData]);
 
     return [fileMetaData, setFileMetaData];
