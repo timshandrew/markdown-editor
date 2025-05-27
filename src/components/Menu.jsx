@@ -2,7 +2,6 @@ import FileListItem from "./FileListItem";
 import logo from "../assets/logo.svg";
 import ThemeSwitch from "./ui/ThemeSwitch";
 
-import { getCurrentDate } from "@/lib/utils";
 import { addFileToStorage } from "@/utils/localStorageUtils.js";
 import useFileItems from "@/hooks/useFileItems";
 
@@ -26,33 +25,24 @@ export default function Menu({
   ));
 
   function addNewDocument() {
-    let fileNum = 1;
-    let fileName = "untitled-document.md";
+    let newFileNum = 1;
+    let newFileName = "untitled-document.md";
 
     while (true) {
-      let fileNameExists = fileMetaData.reduce(
-        (accumulator, mdObj) => accumulator || mdObj.name == fileName,
+      let fileAlreadyExists = fileItems.reduce(
+        (accumulator, file) => accumulator || file.name == newFileName,
         false,
       );
 
-      if (fileNameExists) {
-        fileName = `untitled-document${fileNum}.md`;
-        fileNum++;
+      if (fileAlreadyExists) {
+        newFileName = `untitled-document${newFileNum}.md`;
+        newFileNum++;
       } else {
         break;
       }
     }
 
-    setFileMetaData(() => {
-      const newMarkdown = structuredClone(fileMetaData);
-      newMarkdown.push({
-        createdAt: getCurrentDate(),
-        name: fileName,
-      });
-      return newMarkdown;
-    });
-
-    addFileToStorage(fileName, getCurrentDate());
+    addFileToStorage(newFileName);
   }
 
   return (
