@@ -7,7 +7,10 @@ import Menu from "./components/Menu";
 import useStoredState from "./hooks/useStoredState";
 
 import ContentViewGroup from "./components/ContentViewGroup";
-import { getMarkdownFile } from "./utils/localStorageUtils";
+import {
+  getMarkdownFile,
+  updateCurrentFileContent,
+} from "./utils/localStorageUtils";
 import { Toaster } from "./components/ui/sonner";
 import ChangeTracker from "./components/ChangeTracker";
 
@@ -30,6 +33,10 @@ function App() {
     setTheme((oldTheme) => (oldTheme === "light" ? "dark" : "light"));
   }
 
+  function saveFile() {
+    updateCurrentFileContent(currentFileIndex, markdown);
+  }
+
   return (
     <ChangeTracker currentFileIndex={currentFileIndex}>
       <div
@@ -48,6 +55,7 @@ function App() {
           theme={theme}
           setCurrentFileIndex={setCurrentFileIndex}
           switchTheme={switchTheme}
+          saveFile={saveFile}
         />
 
         <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">

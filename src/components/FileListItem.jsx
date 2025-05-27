@@ -16,10 +16,16 @@ export default function FileListItem({
   creationDate,
   fileName,
   setCurrentFileIndex,
+  saveFile,
 }) {
   const [hasChanges, _] = useContext(ChangeTrackerContext);
 
   function handleClick() {
+    setCurrentFileIndex();
+  }
+
+  function handleClickWithSave() {
+    saveFile();
     setCurrentFileIndex();
   }
 
@@ -50,7 +56,7 @@ export default function FileListItem({
               <DialogClose>
                 <button
                   className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover mb-2 w-full cursor-pointer rounded-md py-2"
-                  onClick={handleClick}
+                  onClick={handleClickWithSave}
                 >
                   Save & Continue
                 </button>

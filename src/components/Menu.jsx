@@ -10,6 +10,7 @@ export default function Menu({
   theme,
   setCurrentFileIndex,
   switchTheme,
+  saveFile,
 }) {
   const [fileItems, _] = useFileItems();
 
@@ -21,6 +22,7 @@ export default function Menu({
       creationDate={mdObj.createdAt}
       fileName={mdObj.name}
       setCurrentFileIndex={() => setCurrentFileIndex(index)}
+      saveFile={saveFile}
     />
   ));
 
