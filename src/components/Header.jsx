@@ -3,6 +3,7 @@ import burgerMenuImg from "../assets/icon-menu.svg";
 import closeMenuImg from "../assets/icon-close.svg";
 import logo from "../assets/logo.svg";
 import saveImg from "../assets/icon-save.svg";
+import { toast } from "sonner";
 
 import {
   getMarkdownFile,
@@ -72,7 +73,10 @@ export default function Header({
 
       <button
         className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
-        onClick={() => updateCurrentFileContent(currentFileIndex, markdown)}
+        onClick={() => {
+          updateCurrentFileContent(currentFileIndex, markdown);
+          toast("Success");
+        }}
       >
         <span className="text-heading-m order-2 hidden lg:block">
           Save Changes

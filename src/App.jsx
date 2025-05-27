@@ -8,6 +8,7 @@ import useStoredState from "./hooks/useStoredState";
 
 import ContentViewGroup from "./components/ContentViewGroup";
 import { getMarkdownFile } from "./utils/localStorageUtils";
+import { Toaster } from "./components/ui/sonner";
 
 function App() {
   const INITIALINDEX = 1;
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div
-      className={`${theme} grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden`}
+      className={`${theme} relative grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden`}
     >
       <Header
         setMenuOpen={setMenuOpen}
@@ -63,6 +64,7 @@ function App() {
           setMarkdown={setMarkdown}
         />
       </main>
+      <Toaster position="bottom-right" />
     </div>
   );
 }
