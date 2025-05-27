@@ -43,3 +43,11 @@ export function addFileToStorage(fileName) {
 
     saveToLocalStorage("markdownDb", markdownDb);
 }
+
+export function deleteFileFromStorage(index) {
+    let markdownDb = retrieveFromLocalStorage("markdownDb");
+
+    markdownDb = markdownDb.filter((_, i) => i !== index);
+
+    saveToLocalStorage("markdownDb", markdownDb);
+}

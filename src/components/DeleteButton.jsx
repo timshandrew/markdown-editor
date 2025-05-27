@@ -10,21 +10,17 @@ import {
 } from "./ui/dialog";
 
 import { TrashCanIcon } from "./SVGComponents.jsx";
+import { deleteFileFromStorage } from "@/utils/localStorageUtils";
 
 export default function DeleteButton({
   menuOpen,
   currentFileIndex,
   currentFileName,
   setCurrentFileIndex,
-  setMarkdown,
 }) {
   function deleteCurrentFile() {
     if (currentFileIndex > 0) {
-      setMarkdown((oldMd) =>
-        structuredClone(
-          oldMd.filter((file, index) => index !== currentFileIndex),
-        ),
-      );
+      deleteFileFromStorage(currentFileIndex);
       setCurrentFileIndex((oldIndex) => (oldIndex === 0 ? 0 : oldIndex - 1));
     }
   }
