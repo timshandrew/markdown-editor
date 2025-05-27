@@ -21,7 +21,7 @@ export default function ContentViewGroup({
         content={markdown}
         className={editorClassName}
       >
-        <MarkdownEditor setMarkdown={setMarkdown} />
+        <MarkdownEditor markdown={markdown} setMarkdown={setMarkdown} />
       </ContentView>
 
       <ContentView
