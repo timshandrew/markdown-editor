@@ -21,7 +21,12 @@ export default function Header({
   menuOpen,
   markdown,
 }) {
-  const fileName = getMarkdownFile(currentFileIndex).name;
+  // Haven't used state because it can be derived from index.
+  // Does mean we have to remember to update it manually from doc. name onBlur though.
+  // The text input isn't a controlled component. Thus it visibly changes without React's state management.
+  // We need the most recent file name to display in the toast.
+  //TODO Maybe just make this into state and make the text input controlled?
+  let fileName = getMarkdownFile(currentFileIndex).name;
 
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
@@ -57,9 +62,10 @@ export default function Header({
           className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
           defaultValue={fileName}
           key={fileName} // Ensures the input updates when the markdown file changes.
-          onBlur={(e) =>
-            updateCurrentFileName(currentFileIndex, e.target.value)
-          }
+          onBlur={(e) => {
+            updateCurrentFileName(currentFileIndex, e.target.value);
+            fileName = e.target.value;
+          }}
         />
       </div>
 
@@ -75,7 +81,7 @@ export default function Header({
         className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
         onClick={() => {
           updateCurrentFileContent(currentFileIndex, markdown);
-          toast("Success");
+          toast(`${fileName} saved successfully.`);
         }}
       >
         <span className="text-heading-m order-2 hidden lg:block">
