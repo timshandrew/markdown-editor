@@ -4,7 +4,11 @@ import closeMenuImg from "../assets/icon-close.svg";
 import logo from "../assets/logo.svg";
 import saveImg from "../assets/icon-save.svg";
 
-import { getMarkdownFile } from "../utils/localStorageUtils.js";
+import {
+  getMarkdownFile,
+  updateCurrentFileContent,
+  updateCurrentFileName,
+} from "../utils/localStorageUtils.js";
 
 import DeleteButton from "./DeleteButton";
 
@@ -14,6 +18,7 @@ export default function Header({
   setMarkdown,
   currentFileIndex,
   menuOpen,
+  markdown,
 }) {
   const fileName = getMarkdownFile(currentFileIndex).name;
 
@@ -51,13 +56,9 @@ export default function Header({
           className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
           defaultValue={fileName}
           key={fileName} // Ensures the input updates when the markdown file changes.
-          // onBlur={(e) =>
-          //   setMarkdown((currentMd) => {
-          //     let newMd = structuredClone(currentMd);
-          //     newMd[currentFileIndex].name = e.target.value;
-          //     return newMd;
-          //   })
-          // }
+          onBlur={(e) =>
+            updateCurrentFileName(currentFileIndex, e.target.value)
+          }
         />
       </div>
 
@@ -71,7 +72,7 @@ export default function Header({
 
       <button
         className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
-        // onClick={() => saveToLocalStorage("markdownDb", markdown)}
+        onClick={() => updateCurrentFileContent(currentFileIndex, markdown)}
       >
         <span className="text-heading-m order-2 hidden lg:block">
           Save Changes

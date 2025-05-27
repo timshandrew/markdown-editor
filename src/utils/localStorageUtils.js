@@ -46,8 +46,18 @@ export function addFileToStorage(fileName) {
 
 export function deleteFileFromStorage(index) {
     let markdownDb = retrieveFromLocalStorage("markdownDb");
-
     markdownDb = markdownDb.filter((_, i) => i !== index);
+    saveToLocalStorage("markdownDb", markdownDb);
+}
 
+export function updateCurrentFileContent(index, content) {
+    let markdownDb = retrieveFromLocalStorage("markdownDb");
+    markdownDb[index].content = content;
+    saveToLocalStorage("markdownDb", markdownDb);
+}
+
+export function updateCurrentFileName(index, name) {
+    let markdownDb = retrieveFromLocalStorage("markdownDb");
+    markdownDb[index].name = name;
     saveToLocalStorage("markdownDb", markdownDb);
 }

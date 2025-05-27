@@ -1,12 +1,12 @@
-import { getMarkdownFile } from "@/utils/localStorageUtils";
 import ContentView from "./ContentView";
 import MarkdownEditor from "./MarkdownEditor";
 import MarkdownPreview from "./MarkdownPreview";
-import { useState } from "react";
 
-export default function ContentViewGroup({ fullWidthPreview, fileIndex }) {
-  const [markdown, setMarkdown] = useState(getMarkdownFile(fileIndex).content);
-
+export default function ContentViewGroup({
+  fullWidthPreview,
+  markdown,
+  setMarkdown,
+}) {
   const editorClassName = fullWidthPreview
     ? "hidden"
     : "col-start-1 col-end-[-1] lg:col-end-3";
@@ -21,10 +21,7 @@ export default function ContentViewGroup({ fullWidthPreview, fileIndex }) {
         content={markdown}
         className={editorClassName}
       >
-        <MarkdownEditor
-          setMarkdown={setMarkdown}
-          currentFileIndex={fileIndex}
-        />
+        <MarkdownEditor setMarkdown={setMarkdown} />
       </ContentView>
 
       <ContentView

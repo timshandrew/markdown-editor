@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import Header from "./components/Header";
 import PreviewToggle from "./components/PreviewToggle";
@@ -7,10 +7,18 @@ import Menu from "./components/Menu";
 import useStoredState from "./hooks/useStoredState";
 
 import ContentViewGroup from "./components/ContentViewGroup";
+import { getMarkdownFile } from "./utils/localStorageUtils";
 
 function App() {
   const INITIALINDEX = 1;
   const [currentFileIndex, setCurrentFileIndex] = useState(INITIALINDEX);
+  const [markdown, setMarkdown] = useState(
+    getMarkdownFile(currentFileIndex).content,
+  );
+
+  useEffect(() => {
+    setMarkdown(getMarkdownFile(currentFileIndex).content);
+  }, [currentFileIndex]);
 
   const [menuOpen, setMenuOpen] = useState(false);
   const [fullWidthPreview, setFullWidthPreview] = useState(false);
@@ -30,6 +38,7 @@ function App() {
         setCurrentFileIndex={setCurrentFileIndex}
         currentFileIndex={currentFileIndex}
         menuOpen={menuOpen}
+        markdown={markdown}
       />
 
       <Menu
@@ -47,8 +56,11 @@ function App() {
         />
 
         <ContentViewGroup
+          key={currentFileIndex}
           fullWidthPreview={fullWidthPreview}
           fileIndex={currentFileIndex}
+          markdown={markdown}
+          setMarkdown={setMarkdown}
         />
       </main>
     </div>
