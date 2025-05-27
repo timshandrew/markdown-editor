@@ -28,6 +28,14 @@ export default function Header({
   //TODO Maybe just make this into state and make the text input controlled?
   let fileName = getMarkdownFile(currentFileIndex).name;
 
+  function handleRename(e) {
+    if (fileName !== e.target.value) {
+      updateCurrentFileName(currentFileIndex, e.target.value);
+      toast(`${fileName} renamed to ${e.target.value}.`);
+      fileName = e.target.value;
+    }
+  }
+
   return (
     <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
       <button
@@ -62,10 +70,7 @@ export default function Header({
           className="text-heading-m caret-orange min-w-0 border-b-1 border-transparent overflow-ellipsis focus:border-100 focus:outline-0"
           defaultValue={fileName}
           key={fileName} // Ensures the input updates when the markdown file changes.
-          onBlur={(e) => {
-            updateCurrentFileName(currentFileIndex, e.target.value);
-            fileName = e.target.value;
-          }}
+          onBlur={handleRename}
         />
       </div>
 

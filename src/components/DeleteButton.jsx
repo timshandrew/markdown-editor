@@ -11,6 +11,7 @@ import {
 
 import { TrashCanIcon } from "./SVGComponents.jsx";
 import { deleteFileFromStorage } from "@/utils/localStorageUtils";
+import { toast } from "sonner";
 
 export default function DeleteButton({
   menuOpen,
@@ -22,6 +23,7 @@ export default function DeleteButton({
     if (currentFileIndex > 0) {
       deleteFileFromStorage(currentFileIndex);
       setCurrentFileIndex((oldIndex) => (oldIndex === 0 ? 0 : oldIndex - 1));
+      toast(`${currentFileName} deleted.`);
     }
   }
 
