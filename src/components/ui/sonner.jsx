@@ -8,7 +8,7 @@ const Toaster = ({ ...props }) => {
         style={{
           "--normal-bg": "var(--clr-bg-header)",
           "--normal-text": "var(--clr-text-accent)",
-          "--normal-border": "var(--color-orange)",
+          "--normal-border": "var(--clr-border)",
         }}
         {...props}
       />
