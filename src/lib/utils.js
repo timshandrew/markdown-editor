@@ -1,8 +1,8 @@
 import { clsx } from "clsx";
-import { twMerge } from "tailwind-merge"
+import {customTwMerge} from "../twMergeConfig";
 
 export function cn(...inputs) {
-  return twMerge(clsx(inputs));
+  return customTwMerge(clsx(inputs));
 }
 
 export function getCurrentDate() {

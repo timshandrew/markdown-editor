@@ -3,8 +3,6 @@ import * as DialogPrimitive from "@radix-ui/react-dialog";
 
 import { cn } from "@/lib/utils";
 
-const PORTAL_TARGET = document.getElementById("app-container");
-
 function Dialog({ ...props }) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />;
 }
@@ -35,6 +33,8 @@ function DialogOverlay({ className, ...props }) {
 }
 
 function DialogContent({ className, children, ...props }) {
+  const PORTAL_TARGET = document.getElementById("app-container");
+
   return (
     <DialogPortal data-slot="dialog-portal" container={PORTAL_TARGET}>
       <DialogOverlay />
@@ -83,7 +83,10 @@ function DialogTitle({ className, ...props }) {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
-      className={cn("font-roboto-slab text-preview-h4 leading-none", className)}
+      className={cn(
+        "font-roboto-slab text-text-accent text-preview-h4 leading-none",
+        className,
+      )}
       {...props}
     />
   );
