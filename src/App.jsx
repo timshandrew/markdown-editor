@@ -41,6 +41,7 @@ function App() {
     <ChangeTracker currentFileIndex={currentFileIndex}>
       <div
         className={`${theme} relative grid min-h-screen grid-cols-[auto_1fr] grid-rows-[4rem] overflow-x-hidden`}
+        id="app-container"
       >
         <Header
           setMenuOpen={setMenuOpen}

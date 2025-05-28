@@ -43,33 +43,25 @@ export default function FileListItem({
             </button>
           </DialogTrigger>
 
-          <DialogPortal>
-            <DialogOverlay />
-            <DialogContent className="font-roboto-slab">
-              <DialogTitle className="text-preview-h4 font-roboto-slab mb-4">
-                Document has unsaved changes.
-              </DialogTitle>
-              <DialogDescription className="text-preview-p text-500 mb-4">
-                You have unsaved changes in the current document. If you do not
-                save you will lose your edits!
-              </DialogDescription>
-              <DialogClose>
-                <button
-                  className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover mb-2 w-full cursor-pointer rounded-md py-2"
-                  onClick={handleClickWithSave}
-                >
-                  Save & Continue
-                </button>
+          <DialogContent className="font-roboto-slab">
+            <DialogTitle className="mb-4">
+              Document has unsaved changes.
+            </DialogTitle>
 
-                <button
-                  className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover w-full cursor-pointer rounded-md py-2"
-                  onClick={handleClick}
-                >
-                  Continue Without Saving
-                </button>
-              </DialogClose>
-            </DialogContent>
-          </DialogPortal>
+            <DialogDescription className="text-preview-p mb-4">
+              You have unsaved changes in the current document. If you do not
+              save you will lose your edits!
+            </DialogDescription>
+
+            <DialogClose asChild>
+              <button
+                className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover mb-2 w-full cursor-pointer rounded-md py-2"
+                onClick={handleClickWithSave}
+              >
+                Save & Continue
+              </button>
+            </DialogClose>
+          </DialogContent>
         </Dialog>
       ) : (
         <button
