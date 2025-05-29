@@ -95,3 +95,18 @@
   --clr-text-secondary: var(--color-400);
   --clr-text-accent: var(--color-100);
 }
+
+/* These two rules are a hacky work-around for the white-space created when
+   the shadcn dialog is shown. It sets overflow hidden on the scroll container and adds
+   margin-right to the body to prevent layout shift. This has the effect of leaving the background of the HTML
+   element visible (the white-space created). These two rules override those effects.
+   
+   This seems like a pretty large flaw with Shadcn's dialog implementation, yet it is a very common component. This
+   leads me to believe I am using it wrong, and so I will look into this further later. */
+html {
+  overflow-y: auto;
+}
+
+body[data-scroll-locked][data-scroll-locked] {
+  margin: 0 !important;
+}
