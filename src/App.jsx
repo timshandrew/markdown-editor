@@ -54,6 +54,7 @@ function App() {
           visible={menuOpen}
           theme={theme}
           setCurrentFileIndex={setCurrentFileIndex}
+          currentFileIndex={currentFileIndex}
           switchTheme={switchTheme}
           saveFile={saveFile}
           gridPosition={{ row: 1, col: 1 }}

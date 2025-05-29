@@ -9,6 +9,7 @@ export default function Menu({
   visible,
   theme,
   setCurrentFileIndex,
+  currentFileIndex,
   switchTheme,
   saveFile,
   gridPosition,
@@ -23,8 +24,10 @@ export default function Menu({
       key={mdObj.name}
       creationDate={mdObj.createdAt}
       fileName={mdObj.name}
-      setCurrentFileIndex={() => setCurrentFileIndex(index)}
+      setCurrentFileIndex={setCurrentFileIndex}
+      selectedFileIndex={currentFileIndex}
       saveFile={saveFile}
+      index={index}
     />
   ));
 
