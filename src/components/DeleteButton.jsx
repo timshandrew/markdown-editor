@@ -3,8 +3,6 @@ import {
   DialogClose,
   DialogContent,
   DialogDescription,
-  DialogOverlay,
-  DialogPortal,
   DialogTitle,
   DialogTrigger,
 } from "./ui/dialog";
@@ -14,7 +12,6 @@ import { deleteFileFromStorage } from "@/utils/localStorageUtils";
 import { toast } from "sonner";
 
 export default function DeleteButton({
-  menuOpen,
   currentFileIndex,
   currentFileName,
   setCurrentFileIndex,
@@ -30,10 +27,8 @@ export default function DeleteButton({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <button
-          className={`me-3 cursor-pointer ${menuOpen ? "hidden" : "block"}`}
-        >
-          <TrashCanIcon className="hover:fill-orange" />
+        <button className="me-3 min-w-0 cursor-pointer">
+          <TrashCanIcon className="hover:fill-orange min-w-0" />
         </button>
       </DialogTrigger>
 

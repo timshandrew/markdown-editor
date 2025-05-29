@@ -83,12 +83,11 @@ export default function Header({
         setCurrentFileIndex={setCurrentFileIndex}
         setMarkdown={setMarkdown}
         currentFileIndex={currentFileIndex}
-        menuOpen={menuOpen}
         currentFileName={fileName}
       />
 
       <button
-        className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2 ${menuOpen ? "hidden" : "block"}`}
+        className={`bg-orange hover:bg-orange-hover me-3 flex cursor-pointer items-center gap-2 rounded-lg p-2`}
         onClick={() => {
           updateCurrentFileContent(currentFileIndex, markdown);
           toast(`${fileName} saved successfully.`);
