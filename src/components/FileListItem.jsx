@@ -20,13 +20,16 @@ export default function FileListItem({
 }) {
   const [hasChanges, _] = useContext(ChangeTrackerContext);
 
+  const currentlySelected = selectedFileIndex === index;
+
+  // If user tries to switch to the current file nothing happens - state remains the same.
   function handleClickWithoutSave() {
     setCurrentFileIndex(index);
   }
 
   return (
     <li className="not-last:mb-3">
-      {hasChanges ? (
+      {hasChanges && !currentlySelected ? (
         <CloseDialog
           saveFile={saveFile}
           selectedFileIndex={selectedFileIndex}
