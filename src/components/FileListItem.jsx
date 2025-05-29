@@ -92,7 +92,7 @@ const CloseDialog = ({
 
         <DialogDescription className="text-preview-p mb-4">
           You have unsaved changes in the current document. If you do not save
-          you will lose your edits!
+          you will lose your changes!
         </DialogDescription>
 
         <DialogClose asChild>
@@ -110,7 +110,7 @@ const CloseDialog = ({
                 className="bg-orange font-roboto-reg text-100 hover:bg-orange-hover mb-2 w-full cursor-pointer rounded-md py-2"
                 onClick={handleClickWithoutSave}
               >
-                Continue Without Saving
+                Continue and Lose Changes
               </button>
             </li>
           </ol>
