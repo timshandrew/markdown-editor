@@ -14,7 +14,7 @@ export default function Menu({
 }) {
   const [fileItems, _] = useFileItems();
 
-  const visibleClasses = visible ? "w-max p-6 " : "w-0 p-0";
+  const visibleClasses = visible ? "w-65 px-6" : "w-0 px-0";
 
   const fileListItems = fileItems.map((mdObj, index) => (
     <FileListItem
@@ -49,7 +49,7 @@ export default function Menu({
 
   return (
     <nav
-      className={`bg-900 text-100 row-span-2 row-start-1 flex flex-col items-start gap-6 overflow-hidden ${visibleClasses}`}
+      className={`bg-900 text-100 row-span-2 row-start-1 flex flex-col items-start gap-6 overflow-hidden py-6 transition-all duration-100 ${visibleClasses}`}
     >
       <img className="block lg:hidden" src={logo} alt="Company logo" />
 
