@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
-
-import Header from "./components/Header";
-import PreviewToggle from "./components/PreviewToggle";
-import Menu from "./components/Menu";
-
 import useStoredState from "./hooks/useStoredState";
 
-import ContentViewGroup from "./components/ContentViewGroup";
+import Header from "./components/Header";
+import Menu from "./components/Menu";
+import Main from "./components/Main";
+import { Toaster } from "./components/ui/sonner";
+import ChangeTracker from "./components/ChangeTracker";
+
 import {
   getMarkdownFile,
   updateCurrentFileContent,
 } from "./utils/localStorageUtils";
-import { Toaster } from "./components/ui/sonner";
-import ChangeTracker from "./components/ChangeTracker";
 
 function App() {
   const [currentFileIndex, setCurrentFileIndex] = useState(1);
@@ -49,6 +47,7 @@ function App() {
           currentFileIndex={currentFileIndex}
           menuOpen={menuOpen}
           markdown={markdown}
+          gridPosition={{ row: 1, col: 2 }}
         />
 
         <Menu
@@ -57,23 +56,17 @@ function App() {
           setCurrentFileIndex={setCurrentFileIndex}
           switchTheme={switchTheme}
           saveFile={saveFile}
+          gridPosition={{ row: 1, col: 1 }}
         />
 
-        <main className="grid w-full grid-cols-[1fr_2rem_1fr_2rem]">
-          <PreviewToggle
-            fullWidthPreview={fullWidthPreview}
-            setPreviewVisible={setFullWidthPreview}
-            className="col-start-4"
-          />
-
-          <ContentViewGroup
-            key={currentFileIndex}
-            fullWidthPreview={fullWidthPreview}
-            fileIndex={currentFileIndex}
-            markdown={markdown}
-            setMarkdown={setMarkdown}
-          />
-        </main>
+        <Main
+          fullWidthPreview={fullWidthPreview}
+          setFullWidthPreview={setFullWidthPreview}
+          currentFileIndex={currentFileIndex}
+          markdown={markdown}
+          setMarkdown={setMarkdown}
+          gridPosition={{ row: 2, col: 2 }}
+        />
 
         <Toaster position="bottom-right" />
       </div>

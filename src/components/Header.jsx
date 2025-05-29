@@ -20,6 +20,7 @@ export default function Header({
   currentFileIndex,
   menuOpen,
   markdown,
+  gridPosition,
 }) {
   // Haven't used state because it can be derived from index.
   // Does mean we have to remember to update it manually from doc. name onBlur though.
@@ -27,6 +28,8 @@ export default function Header({
   // We need the most recent file name to display in the toast.
   //TODO Maybe just make this into state and make the text input controlled?
   let fileName = getMarkdownFile(currentFileIndex).name;
+
+  const gridClasses = `col-start-${gridPosition.col} row-start-${gridPosition.row}`;
 
   function handleRename(e) {
     if (fileName !== e.target.value) {
@@ -37,7 +40,9 @@ export default function Header({
   }
 
   return (
-    <header className="bg-800 text-100 col-start-2 row-start-1 flex h-[4rem] items-center">
+    <header
+      className={`${gridClasses} bg-800 text-100 flex h-[4rem] items-center`}
+    >
       <button
         className="bg-700 hover:bg-orange me-6 h-full flex-[0_0_4rem] cursor-pointer"
         onClick={() => setMenuOpen((currentValue) => !currentValue)}

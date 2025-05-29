@@ -1,14 +1,8 @@
-import { getCurrentDate } from "@/lib/utils";
+import { getCurrentDate } from "@/utils/generalUtils";
 
 import defaultMarkdown from "../data.json";
 
 const storageUpdatedEvent = new Event("storageUpdated");
-
-export function initLocalStorage() {
-    if (!localStorage.getItem("markdownDb")) {
-        localStorage.setItem("markdownDb", JSON.stringify(defaultMarkdown));
-    }
-}
 
 export function saveToLocalStorage(key, value) {
     try {
@@ -60,4 +54,10 @@ export function updateCurrentFileName(index, name) {
     let markdownDb = retrieveFromLocalStorage("markdownDb");
     markdownDb[index].name = name;
     saveToLocalStorage("markdownDb", markdownDb);
+}
+
+export function initLocalStorage() {
+    if (!localStorage.getItem("markdownDb")) {
+        localStorage.setItem("markdownDb", JSON.stringify(defaultMarkdown));
+    }
 }
